@@ -1,9 +1,9 @@
 # Qiita::Team のデータをバックアップするツール
 
-このコードは Qiita::Teamのデータ(記事データのみ。プロジェクトやコメントを含まない)
+このコードは [Qiita::Team](https://teams.qiita.com/) のデータ(記事データのみ。プロジェクトやコメントを含まない)
 を、ごっそりバックアップを取るために作ったものです。
 
-あと、esa.io に移動したかった。
+あと、[esa.io](http://esa.io) に移動したかった。
  
 ## セットアップ
 
@@ -24,7 +24,7 @@ QIITA_TEAM="YOUR_TEAM_NAME" QIITA_ACCESS_TOKEN="YOUR_TOKEN" ./node_modules/.bin/
 環境変数 `QIITA_TEAM` には環境変数を、`QIITA_ACCESS_TOKEN` には `read_qiita_team` 権限のあるQiitaアクセストークンを指定してください。
  
 
-## Qiita記事内の画像を取得しMarkdownファイルの画像パスを置き換え
+## Qiita記事内の画像を取得しMarkdownファイル内の画像パスを置き換え
 
 ```
 QIITA_TEAM="YOUR_TEAM_NAME" QIITA_ACCESS_TOKEN="YOUR_TOKEN" [IMAGE_PREFIX="https://.."] ./node_modules/.bin/gulp retrieve-qiita-items
@@ -48,6 +48,8 @@ ESA_TEAM="YOUR_TEAM_NAME" ESA_ACCESS_TOKEN="YOUR_TOKEN" ./node_modules/.bin/gulp
 `./qiita-dest` 内のmdファイルを、esa.io上に投稿します。esa.io上の記事名は `Archived_Qiita/YYYY/MM/記事名 #tag #tag`
 のように変換され、記事名に `/` があった場合は、`_` へ置き換えされます。
 
+環境変数、`ESA_TEAM` には esa.io のチーム名を。`ESA_ACCESS_TOKEN` には、`Write` 権限のある esa.io アクセストークンを指定してください。
+
 2016年4月現在、esaのAPIは15分につき75回のみのコールとなるため、結構な時間がかかります。
 
 ## esa.io の Archived から投稿を削除する
@@ -55,3 +57,5 @@ ESA_TEAM="YOUR_TEAM_NAME" ESA_ACCESS_TOKEN="YOUR_TOKEN" ./node_modules/.bin/gulp
 ```
 ESA_TEAM="YOUR_TEAM_NAME" ESA_ACCESS_TOKEN="YOUR_TOKEN" ./node_modules/.bin/gulp delete-archived-in-esa
 ```
+
+おまけ機能。移行に失敗したときなどに、Archived に移動したデータを消すために作りました。
