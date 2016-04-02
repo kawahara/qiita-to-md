@@ -1,0 +1,6 @@
+.progress
+qiita/
+qiita-dest/
+.idea/
+node_modules/
+*.iml
